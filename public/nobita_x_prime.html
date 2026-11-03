@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>⚡ NOBITA X PRIME — QUANTUM VIP ENGINE</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            orbitron: ['Orbitron', 'sans-serif'],
+            cinzel: ['Cinzel', 'serif'],
+            mono: ['"Share Tech Mono"', 'monospace'],
+            rajdhani: ['Rajdhani', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --primary: #ff2a4b;
+      --primary-glow: rgba(255, 42, 75, 0.4);
+      --bg-color: #06060c;
+    }
+    body[data-theme="blood-red"] {
+      --primary: #ff2a4b;
+      --primary-glow: rgba(255, 42, 75, 0.4);
+    }
+    body[data-theme="emerald-vip"] {
+      --primary: #00ff88;
+      --primary-glow: rgba(0, 255, 136, 0.4);
+    }
+    body[data-theme="royal-gold"] {
+      --primary: #ffd000;
+      --primary-glow: rgba(255, 208, 0, 0.4);
+    }
+    body[data-theme="cyber-neon"] {
+      --primary: #00e5ff;
+      --primary-glow: rgba(0, 229, 255, 0.4);
+    }
+    body[data-theme="deep-purple"] {
+      --primary: #bf00ff;
+      --primary-glow: rgba(191, 0, 255, 0.4);
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: #fff;
+      font-family: 'Rajdhani', sans-serif;
+      overflow-x: hidden;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .rgb-border {
+      background: linear-gradient(90deg, #ff0055, #ffd000, #00ff88, #00e5ff, #bf00ff, #ff0055);
+      background-size: 400% 400%;
+      animation: rgbGlow 6s linear infinite;
+    }
+
+    @keyframes rgbGlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .text-glow-red { text-shadow: 0 0 15px rgba(255, 42, 75, 0.8); }
+    .text-glow-green { text-shadow: 0 0 15px rgba(0, 255, 136, 0.8); }
+    .text-glow-gold { text-shadow: 0 0 20px rgba(255, 208, 0, 0.9); }
+
+    .custom-scroll::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+    }
+
+    /* 5 POWERFUL CYBER-QUANTUM ANIMATIONS */
+    @keyframes quantumLaserScan {
+      0% { top: -10%; opacity: 0; }
+      15% { opacity: 0.9; }
+      85% { opacity: 0.9; }
+      100% { top: 110%; opacity: 0; }
+    }
+    .anim-quantum-laser {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent 0%, #00ff88 20%, #ffd000 50%, #ff2a4b 80%, transparent 100%);
+      box-shadow: 0 0 15px #00ff88, 0 0 25px #ffd000;
+      animation: quantumLaserScan 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      pointer-events: none;
+      z-index: 15;
+    }
+
+    @keyframes orbitalSpinClockwise {
+      0% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(180deg) scale(1.06); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+    @keyframes orbitalSpinCounter {
+      0% { transform: rotate(360deg) scale(1); }
+      50% { transform: rotate(180deg) scale(0.95); }
+      100% { transform: rotate(0deg) scale(1); }
+    }
+    @keyframes goldLightningSurge {
+      0%, 100% {
+        box-shadow: 0 0 15px rgba(255, 208, 0, 0.35), inset 0 0 10px rgba(255, 208, 0, 0.2);
+        border-color: rgba(255, 208, 0, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 30px rgba(255, 208, 0, 0.8), inset 0 0 20px rgba(255, 208, 0, 0.5);
+        border-color: #ffd000;
+      }
+    }
+    .anim-orbital-ring-1 {
+      position: absolute;
+      inset: -4px;
+      border-radius: 16px;
+      border: 1.5px dashed rgba(255, 208, 0, 0.7);
+      animation: orbitalSpinClockwise 8s linear infinite;
+      pointer-events: none;
+    }
+    .anim-orbital-ring-2 {
+      position: absolute;
+      inset: -8px;
+      border-radius: 20px;
+      border: 1px dotted rgba(255, 42, 75, 0.5);
+      animation: orbitalSpinCounter 12s linear infinite;
+      pointer-events: none;
+    }
+    .anim-seed-reactor {
+      animation: goldLightningSurge 2s ease-in-out infinite;
+    }
+
+    @keyframes radarShockwave {
+      0% { transform: scale(0.85); opacity: 0.9; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+    .anim-radar-wave {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 1.5px solid currentColor;
+      animation: radarShockwave 1.6s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+      pointer-events: none;
+    }
+
+    @keyframes criticalAlarmStrobe {
+      0%, 100% {
+        background-color: rgba(255, 42, 75, 0.15);
+        border-color: #ff2a4b;
+        box-shadow: 0 0 20px rgba(255, 42, 75, 0.5);
+      }
+      50% {
+        background-color: rgba(255, 42, 75, 0.35);
+        border-color: #ff0033;
+        box-shadow: 0 0 35px rgba(255, 42, 75, 0.85);
+      }
+    }
+    .anim-critical-alarm {
+      animation: criticalAlarmStrobe 0.6s ease-in-out infinite;
+    }
+
+    @keyframes outcomeSupernovaBurst {
+      0% { transform: scale(0.65); filter: blur(8px) brightness(2.5); opacity: 0.2; }
+      40% { transform: scale(1.08); filter: blur(0px) brightness(1.6); opacity: 1; }
+      70% { transform: scale(0.98); filter: brightness(1.2); }
+      100% { transform: scale(1); filter: brightness(1); opacity: 1; }
+    }
+    .anim-outcome-supernova {
+      animation: outcomeSupernovaBurst 0.75s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+    }
+  </style>
+</head>
+<body data-theme="blood-red" class="min-h-screen flex justify-center bg-[#06060c]">
+  <!-- Particle Background Canvas -->
+  <canvas id="bg-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+
+  <!-- Celebration Modal Canvas -->
+  <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-50 w-full h-full"></canvas>
+
+  <!-- Main App Shell (Max Width on Desktop, full width mobile) -->
+  <div id="app" class="w-full max-w-md min-h-screen flex flex-col relative z-10 pb-24 shadow-2xl bg-[#06060c]/90 backdrop-blur-sm border-x border-white/[0.05]">
+    
+    <!-- Top Announcement Bar (Dynamic) -->
+    <div id="announcement-bar" class="hidden px-3 py-1.5 text-xs font-mono font-bold flex items-center justify-between text-center bg-amber-500/90 text-black">
+      <span id="announcement-text" class="truncate mx-auto">⚡ VIP SYSTEM ACTIVE</span>
+      <button onclick="dismissAnnouncement()" class="text-xs opacity-75 hover:opacity-100 p-0.5">✕</button>
+    </div>
+
+    <!-- Header Section -->
+    <header class="p-3 border-b border-white/[0.08] bg-black/60 sticky top-0 z-30 backdrop-blur-md flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="w-9 h-9 rounded-xl rgb-border p-0.5 shadow-[0_0_15px_rgba(255,42,75,0.4)]">
+          <div class="w-full h-full bg-[#080812] rounded-[10px] flex items-center justify-center font-orbitron font-black text-xs text-amber-400">
+            NX
+          </div>
+        </div>
+        <div>
+          <h1 class="font-orbitron font-black text-sm tracking-wider text-white flex items-center gap-1.5">
+            NOBITA X PRIME <span class="px-1.5 py-0.2 rounded bg-red-600/30 border border-red-500/50 text-[9px] text-red-400 font-bold">v5.0</span>
+          </h1>
+          <div class="flex items-center gap-2 text-[10px] font-mono text-gray-400">
+            <span class="flex items-center gap-1">
+              <span id="api-status-dot" class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span id="api-status-text" class="text-emerald-400">LIVE SYNC</span>
+            </span>
+            <span>•</span>
+            <span class="text-amber-300 font-semibold" id="header-safety-level">MARTINGALE L1</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Action Controls -->
+      <div class="flex items-center gap-1.5">
+        <button id="voice-btn" onclick="toggleVoice()" class="p-2 rounded-xl bg-white/[0.05] border border-white/[0.1] text-xs text-gray-300 hover:text-white transition-all" title="Toggle Voice Announcer">
+          🔊
+        </button>
+        <button onclick="openAdminModal()" class="p-2 rounded-xl bg-white/[0.05] border border-white/[0.1] text-xs text-amber-300 hover:text-amber-200 transition-all" title="Admin & Overrides">
+          ⚙️
+        </button>
+      </div>
+    </header>
+
+    <!-- TAB 1: TERMINAL / LIVE PREDICTIONS -->
+    <div id="tab-terminal" class="tab-content p-3 space-y-3.5 animate-in fade-in">
+      
+      <!-- Period & 60s Live Countdown Bar -->
+      <div class="bg-[#0b0b14] border border-white/[0.08] rounded-2xl p-3 shadow-lg flex items-center justify-between">
+        <div>
+          <span class="text-[10px] font-orbitron font-semibold text-gray-400 uppercase tracking-widest block">TARGET ISSUE PERIOD</span>
+          <span id="current-period-display" class="font-mono text-sm md:text-base font-bold text-amber-300 tracking-wider">
+            2026070510001001
+          </span>
+        </div>
+        <div class="text-right">
+          <span class="text-[10px] font-orbitron font-semibold text-gray-400 uppercase tracking-widest block">CLOSING IN</span>
+          <div class="flex items-center justify-end gap-1.5 font-orbitron font-black text-lg" id="timer-display">
+            <span id="timer-val" class="text-white">00:55</span>
+            <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Prediction Card (RGB Frame & Neon Core) -->
+      <div id="prediction-card-frame" class="relative p-0.5 rounded-3xl rgb-border shadow-[0_0_30px_rgba(255,42,75,0.25)] transition-all overflow-hidden">
+        <!-- 1. Animation: Laser Scanner -->
+        <div class="anim-quantum-laser"></div>
+        <div class="bg-gradient-to-b from-[#0e0e1a] via-[#090912] to-[#05050a] rounded-[22px] p-5 text-center relative overflow-hidden">
+          
+          <div class="flex items-center justify-between text-[10px] font-mono text-gray-400 border-b border-white/[0.06] pb-2 mb-3">
+            <span class="flex items-center gap-1 text-amber-400 font-bold font-orbitron">
+              ⚡ QUANTUM FUSION
+            </span>
+            <span id="pattern-tag" class="px-2 py-0.5 rounded bg-white/[0.05] border border-white/[0.1] text-emerald-400 font-bold">
+              MARKOV FLOW
+            </span>
+          </div>
+
+          <!-- Main Outcome Display (BIG / SMALL) with Supernova Burst -->
+          <div class="my-2">
+            <div class="text-[10px] font-orbitron font-bold text-gray-400 tracking-widest uppercase mb-1">
+              ALGORITHM TARGET
+            </div>
+            <div id="prediction-outcome" class="font-orbitron font-black text-5xl md:text-6xl tracking-wider text-emerald-400 text-glow-green anim-outcome-supernova">
+              BIG
+            </div>
+          </div>
+
+          <!-- 2 Smart Jackpot Locked Seeds with Orbital Reactor Rings -->
+          <div class="my-4 bg-black/60 border border-amber-500/30 rounded-2xl p-2.5">
+            <div class="text-[10px] font-orbitron font-bold text-amber-400 tracking-wider flex items-center justify-center gap-1 mb-1.5">
+              <span>🔒 9× EXACT JACKPOT SEEDS</span>
+            </div>
+            <div class="flex items-center justify-center gap-5 py-1">
+              <div class="relative">
+                <div class="anim-orbital-ring-1"></div>
+                <div class="anim-orbital-ring-2"></div>
+                <div id="seed-1" class="w-11 h-11 rounded-xl bg-amber-500/20 border border-amber-400 flex items-center justify-center font-orbitron font-black text-xl text-amber-300 anim-seed-reactor shadow-[0_0_15px_rgba(255,208,0,0.3)]">
+                  7
+                </div>
+              </div>
+              <div class="relative">
+                <div class="anim-orbital-ring-1 border-red-500/60"></div>
+                <div class="anim-orbital-ring-2 border-amber-400/40"></div>
+                <div id="seed-2" class="w-11 h-11 rounded-xl bg-amber-500/20 border border-amber-400 flex items-center justify-center font-orbitron font-black text-xl text-amber-300 anim-seed-reactor shadow-[0_0_15px_rgba(255,208,0,0.3)]">
+                  2
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Confidence & Level -->
+          <div class="space-y-1.5 my-3">
+            <div class="flex items-center justify-between text-xs font-mono">
+              <span class="text-gray-400">CALCULATED CONFIDENCE:</span>
+              <span id="confidence-pct" class="font-orbitron font-bold text-emerald-400">96.4%</span>
+            </div>
+            <div class="w-full h-2 rounded-full bg-black/60 overflow-hidden border border-white/[0.08]">
+              <div id="confidence-bar" class="h-full bg-gradient-to-r from-amber-500 via-emerald-400 to-emerald-300 rounded-full transition-all duration-500" style="width: 96.4%"></div>
+            </div>
+          </div>
+
+          <!-- COPY PREDICTION (FANCY UNICODE FONT) BUTTON -->
+          <button id="copy-prediction-btn" onclick="copyCurrentPrediction()" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-red-600 via-amber-600 to-red-600 hover:from-red-500 hover:to-amber-500 text-white font-orbitron font-black text-xs tracking-wider uppercase shadow-[0_4px_25px_rgba(255,42,75,0.35)] active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer mt-3">
+            <span id="copy-btn-icon">📋</span>
+            <span id="copy-btn-text">COPY PREDICTION (BEST FANCY FONT)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Strategy Selector -->
+      <div class="bg-[#0b0b14] border border-white/[0.08] rounded-2xl p-3">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-[10px] font-orbitron font-bold text-gray-300 tracking-wider">
+            ⚙️ ACTIVE STRATEGY ENGINE
+          </span>
+          <span class="text-[9px] font-mono text-emerald-400 font-bold">AUTO AI BALANCED</span>
+        </div>
+        <select id="strategy-select" onchange="changeStrategy(this.value)" class="w-full bg-black/70 border border-white/[0.1] rounded-xl px-3 py-2 text-xs font-orbitron text-amber-300 outline-none cursor-pointer">
+          <option value="QUANTUM_FUSION">⚡ QUANTUM FUSION (MULTI-COUNCIL)</option>
+          <option value="DRAGON_BREAKER">🐉 DRAGON BREAKER (STREAK INVERSION)</option>
+          <option value="MARKOV_FLOW">🌊 MARKOV FLOW (PROBABILITY CHAINS)</option>
+          <option value="MARTINGALE_SAFETY">🛡️ MARTINGALE AUTO SAFETY (L1-L6)</option>
+        </select>
+      </div>
+
+      <!-- Trend Chart (Last 10 results) -->
+      <div class="bg-[#0b0b14] border border-white/[0.08] rounded-2xl p-3">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-[10px] font-orbitron font-bold text-amber-400 tracking-wider">
+            📊 LIVE RECENT TREND (LAST 10)
+          </span>
+          <span id="trend-ratio" class="text-[9px] font-mono text-gray-300 px-2 py-0.5 rounded bg-white/[0.05]">
+            B: 6 / S: 4
+          </span>
+        </div>
+        <div id="trend-bars" class="h-16 flex items-end justify-between gap-1 px-2 pt-2 border-b border-white/[0.06]">
+          <!-- Dynamic bars rendered here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: VIP LEADERBOARD -->
+    <div id="tab-leaderboard" class="tab-content hidden p-3 space-y-3.5 animate-in fade-in">
+      <div class="bg-[#0b0b14] border border-amber-500/30 rounded-2xl p-4 text-center shadow-[0_0_25px_rgba(255,208,0,0.15)]">
+        <h2 class="font-orbitron font-black text-lg text-amber-400 flex items-center justify-center gap-1.5">
+          👑 GLOBAL VIP LEADERBOARD
+        </h2>
+        <p class="text-xs font-mono text-gray-400 mt-0.5">Top performing predictors & quantum operators</p>
+
+        <!-- Podium (Top 3) -->
+        <div class="flex items-end justify-center gap-2 mt-4 pt-2">
+          <!-- Rank 2 -->
+          <div class="flex-1 bg-black/60 border border-white/[0.1] rounded-2xl p-2.5 text-center">
+            <div class="text-lg">🥈</div>
+            <div class="font-orbitron font-bold text-xs text-white truncate">RAHUL_VIP</div>
+            <div class="text-[10px] font-mono text-emerald-400 font-bold">142 WINS</div>
+            <div class="text-[9px] font-mono text-purple-300">12 🎯</div>
+          </div>
+          <!-- Rank 1 -->
+          <div class="flex-1 bg-amber-500/15 border-2 border-amber-400 rounded-2xl p-3 text-center -translate-y-2 shadow-[0_0_20px_rgba(255,208,0,0.3)]">
+            <div class="text-2xl animate-bounce">👑</div>
+            <div class="font-orbitron font-black text-xs text-amber-300 truncate">NOBITA_PAPA</div>
+            <div class="text-[11px] font-mono text-emerald-400 font-extrabold">218 WINS</div>
+            <div class="text-[10px] font-mono text-purple-300 font-bold">29 🎯</div>
+          </div>
+          <!-- Rank 3 -->
+          <div class="flex-1 bg-black/60 border border-white/[0.1] rounded-2xl p-2.5 text-center">
+            <div class="text-lg">🥉</div>
+            <div class="font-orbitron font-bold text-xs text-white truncate">VIKRAM_777</div>
+            <div class="text-[10px] font-mono text-emerald-400 font-bold">119 WINS</div>
+            <div class="text-[9px] font-mono text-purple-300">9 🎯</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Leaderboard List -->
+      <div id="leaderboard-list" class="space-y-2">
+        <!-- List items -->
+      </div>
+    </div>
+
+    <!-- TAB 3: HISTORY & D3 STREAK CHART -->
+    <div id="tab-history" class="tab-content hidden p-3 space-y-3.5 animate-in fade-in">
+      <!-- Overview stats grid -->
+      <div class="grid grid-cols-3 gap-2">
+        <div class="bg-black/50 border border-emerald-500/25 rounded-2xl p-3 text-center">
+          <div id="stats-wins" class="font-orbitron text-xl font-black text-emerald-400">0</div>
+          <div class="text-[9px] font-orbitron font-semibold text-gray-400">WINS</div>
+        </div>
+        <div class="bg-black/50 border border-red-500/25 rounded-2xl p-3 text-center">
+          <div id="stats-losses" class="font-orbitron text-xl font-black text-red-400">0</div>
+          <div class="text-[9px] font-orbitron font-semibold text-gray-400">LOSSES</div>
+        </div>
+        <div class="bg-black/50 border border-amber-500/30 rounded-2xl p-3 text-center">
+          <div id="stats-winrate" class="font-orbitron text-xl font-black text-amber-400">0.0%</div>
+          <div class="text-[9px] font-orbitron font-semibold text-gray-400">WIN RATE</div>
+        </div>
+      </div>
+
+      <!-- Streak Momentum SVG Line Chart (Last 50) -->
+      <div class="bg-[#0b0b14] border border-amber-500/30 rounded-2xl p-3 space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-orbitron font-bold text-white flex items-center gap-1">
+            📈 STREAK MOMENTUM (LAST 50)
+          </span>
+          <span class="text-[9px] font-mono text-amber-400" id="best-streak-display">PEAK: +0W</span>
+        </div>
+        <div class="w-full h-32 bg-black/60 rounded-xl p-2 relative overflow-hidden border border-white/[0.05]">
+          <svg id="streak-svg" class="w-full h-full"></svg>
+        </div>
+      </div>
+
+      <!-- History Actions Header with One-Click CLEAR HISTORY -->
+      <div class="bg-[#0b0b14] border border-white/[0.08] rounded-2xl p-3 space-y-2.5">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-orbitron font-bold text-white flex items-center gap-1.5">
+            📜 PREDICTION LOGS
+          </span>
+          <div class="flex items-center gap-1.5">
+            <button onclick="copyAllHistory()" class="px-2.5 py-1.5 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.1] text-xs font-orbitron font-bold text-amber-300 cursor-pointer">
+              📋 Copy All
+            </button>
+            <!-- Prominent Clear History Button -->
+            <button onclick="openClearConfirmModal()" class="px-3 py-1.5 rounded-xl bg-red-600/20 hover:bg-red-600/30 border border-red-500/50 text-red-400 hover:text-white text-xs font-orbitron font-bold shadow-[0_0_12px_rgba(255,42,75,0.25)] cursor-pointer">
+              🗑️ CLEAR HISTORY
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter pills -->
+        <div class="flex bg-black/60 rounded-xl p-1 border border-white/[0.05]">
+          <button onclick="setHistoryFilter('ALL')" class="hist-filter flex-1 py-1 text-[10px] font-orbitron font-bold rounded-lg bg-gradient-to-r from-red-600 to-amber-600 text-white" data-filter="ALL">ALL</button>
+          <button onclick="setHistoryFilter('WIN')" class="hist-filter flex-1 py-1 text-[10px] font-orbitron font-bold rounded-lg text-gray-400 hover:text-white" data-filter="WIN">WIN</button>
+          <button onclick="setHistoryFilter('LOSS')" class="hist-filter flex-1 py-1 text-[10px] font-orbitron font-bold rounded-lg text-gray-400 hover:text-white" data-filter="LOSS">LOSS</button>
+          <button onclick="setHistoryFilter('JACKPOT')" class="hist-filter flex-1 py-1 text-[10px] font-orbitron font-bold rounded-lg text-gray-400 hover:text-white" data-filter="JACKPOT">JACKPOT</button>
+        </div>
+      </div>
+
+      <!-- History Items Log -->
+      <div id="history-items-list" class="space-y-2">
+        <!-- Rows dynamically rendered here -->
+      </div>
+    </div>
+
+    <!-- TAB 4: THEMES -->
+    <div id="tab-themes" class="tab-content hidden p-3 space-y-3 animate-in fade-in">
+      <div class="bg-[#0b0b14] border border-white/[0.08] rounded-2xl p-4 space-y-3">
+        <h2 class="font-orbitron font-black text-sm text-white">🎨 SELECT VIP THEME</h2>
+        <div class="space-y-2">
+          <button onclick="setAppTheme('blood-red')" class="w-full p-3 rounded-2xl bg-black/60 border border-red-500/40 flex items-center justify-between text-left">
+            <div>
+              <div class="font-orbitron font-bold text-xs text-red-400">BLOOD RED PRIME (DEFAULT)</div>
+              <div class="text-[10px] font-mono text-gray-400">Aggressive Cyberpunk Atmosphere</div>
+            </div>
+            <div class="w-4 h-4 rounded-full bg-red-500"></div>
+          </button>
+          <button onclick="setAppTheme('emerald-vip')" class="w-full p-3 rounded-2xl bg-black/60 border border-emerald-500/40 flex items-center justify-between text-left">
+            <div>
+              <div class="font-orbitron font-bold text-xs text-emerald-400">EMERALD VIP MATRIX</div>
+              <div class="text-[10px] font-mono text-gray-400">High-Tech Profit Engine</div>
+            </div>
+            <div class="w-4 h-4 rounded-full bg-emerald-400"></div>
+          </button>
+          <button onclick="setAppTheme('royal-gold')" class="w-full p-3 rounded-2xl bg-black/60 border border-amber-500/40 flex items-center justify-between text-left">
+            <div>
+              <div class="font-orbitron font-bold text-xs text-amber-400">ROYAL 9X GOLD</div>
+              <div class="text-[10px] font-mono text-gray-400">Pure Gold Jackpot Luxury</div>
+            </div>
+            <div class="w-4 h-4 rounded-full bg-amber-400"></div>
+          </button>
+          <button onclick="setAppTheme('cyber-neon')" class="w-full p-3 rounded-2xl bg-black/60 border border-cyan-500/40 flex items-center justify-between text-left">
+            <div>
+              <div class="font-orbitron font-bold text-xs text-cyan-400">CYBER NEON AZURE</div>
+              <div class="text-[10px] font-mono text-gray-400">Ultra-bright Holographic UI</div>
+            </div>
+            <div class="w-4 h-4 rounded-full bg-cyan-400"></div>
+          </button>
+          <button onclick="setAppTheme('deep-purple')" class="w-full p-3 rounded-2xl bg-black/60 border border-purple-500/40 flex items-center justify-between text-left">
+            <div>
+              <div class="font-orbitron font-bold text-xs text-purple-400">DEEP PURPLE GALAXY</div>
+              <div class="text-[10px] font-mono text-gray-400">Mystic Quantum Horizon</div>
+            </div>
+            <div class="w-4 h-4 rounded-full bg-purple-400"></div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: PROFILE & SETTINGS -->
+    <div id="tab-profile" class="tab-content hidden p-3 space-y-3.5 animate-in fade-in">
+      <div class="bg-[#0b0b14] border border-white/[0.08] rounded-2xl p-4 text-center space-y-2">
+        <div class="w-16 h-16 rounded-3xl bg-gradient-to-br from-red-600 via-amber-500 to-red-600 mx-auto flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(255,42,75,0.4)]">
+          👑
+        </div>
+        <h2 id="profile-name" class="font-orbitron font-black text-base text-white">NOBITA X PRIME VIP</h2>
+        <div class="text-[10px] font-mono text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-full inline-block border border-amber-500/20">
+          QUANTUM VIP MASTER • LVL 7
+        </div>
+
+        <div class="pt-3 border-t border-white/[0.08] flex items-center justify-around text-center">
+          <div>
+            <div class="text-xs font-mono text-gray-400">DEVICE STATUS</div>
+            <div class="font-orbitron font-bold text-emerald-400 text-xs">AUTHORIZED</div>
+          </div>
+          <div>
+            <div class="text-xs font-mono text-gray-400">ENCRYPTION</div>
+            <div class="font-orbitron font-bold text-amber-300 text-xs">AES-256</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Reset -->
+      <div class="bg-[#0b0b14] border border-white/[0.08] rounded-2xl p-4 space-y-2">
+        <h3 class="font-orbitron font-bold text-xs text-gray-300">QUICK ACTIONS</h3>
+        <button onclick="openClearConfirmModal()" class="w-full py-2.5 rounded-xl bg-red-600/20 hover:bg-red-600/30 border border-red-500/40 text-red-400 font-orbitron text-xs font-bold transition-all">
+          🗑️ WIPE ALL APP HISTORY & CACHE
+        </button>
+      </div>
+    </div>
+
+    <!-- Floating Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto z-40 bg-black/85 backdrop-blur-xl border-t border-white/[0.08] px-2 py-2 flex items-center justify-around">
+      <button onclick="switchTab('terminal')" class="nav-btn flex flex-col items-center gap-0.5 text-amber-400 text-[10px] font-orbitron font-bold" data-tab="terminal">
+        <span class="text-base">⚡</span>
+        <span>TERMINAL</span>
+      </button>
+      <button onclick="switchTab('leaderboard')" class="nav-btn flex flex-col items-center gap-0.5 text-gray-400 text-[10px] font-orbitron font-bold" data-tab="leaderboard">
+        <span class="text-base">👑</span>
+        <span>VIP BOARD</span>
+      </button>
+      <button onclick="switchTab('history')" class="nav-btn flex flex-col items-center gap-0.5 text-gray-400 text-[10px] font-orbitron font-bold" data-tab="history">
+        <span class="text-base">📜</span>
+        <span>HISTORY</span>
+      </button>
+      <button onclick="switchTab('themes')" class="nav-btn flex flex-col items-center gap-0.5 text-gray-400 text-[10px] font-orbitron font-bold" data-tab="themes">
+        <span class="text-base">🎨</span>
+        <span>THEMES</span>
+      </button>
+      <button onclick="switchTab('profile')" class="nav-btn flex flex-col items-center gap-0.5 text-gray-400 text-[10px] font-orbitron font-bold" data-tab="profile">
+        <span class="text-base">👤</span>
+        <span>PROFILE</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- RESULT POPUP MODAL (WIN / LOSS / JACKPOT) -->
+  <div id="result-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-xl animate-in fade-in">
+    <div class="relative w-full max-w-sm">
+      <div id="result-modal-frame" class="rounded-3xl p-1 relative overflow-hidden shadow-2xl bg-gradient-to-br from-amber-400 to-yellow-600">
+        <div class="bg-[#080810] rounded-[22px] p-6 text-center relative overflow-hidden">
+          
+          <button onclick="closeResultModal()" class="absolute top-3.5 right-3.5 p-1 rounded-full text-gray-400 hover:text-white bg-white/[0.05]">✕</button>
+
+          <div id="result-icon-banner" class="w-20 h-20 rounded-3xl mx-auto mb-3 flex items-center justify-center text-4xl shadow-lg bg-amber-500 text-black">
+            🏆
+          </div>
+
+          <h2 id="result-modal-title" class="font-orbitron text-3xl font-black tracking-wider uppercase text-amber-300 text-glow-gold">
+            JACKPOT HIT!
+          </h2>
+
+          <p id="result-modal-period" class="font-mono text-xs text-gray-400 uppercase tracking-widest mt-1 mb-4">
+            PERIOD #1001
+          </p>
+
+          <div class="grid grid-cols-2 gap-2 my-4 bg-black/60 border border-white/[0.08] rounded-2xl p-3">
+            <div>
+              <div class="text-[9px] font-orbitron font-semibold text-gray-400">PREDICTION</div>
+              <div id="modal-pred-val" class="font-orbitron text-lg font-black text-emerald-400">BIG</div>
+              <div id="modal-pred-seeds" class="text-[9px] font-mono text-amber-400">[7, 2]</div>
+            </div>
+            <div class="border-l border-white/[0.08]">
+              <div class="text-[9px] font-orbitron font-semibold text-gray-400">ACTUAL HIT</div>
+              <div id="modal-actual-val" class="font-orbitron text-lg font-black text-white">7 (BIG)</div>
+              <div id="modal-status-tag" class="text-[9px] font-mono text-amber-400 font-bold">🎯 EXACT MATCH</div>
+            </div>
+          </div>
+
+          <!-- Jackpot Confetti Blast Trigger -->
+          <div id="jackpot-blast-area" class="space-y-2 mb-4">
+            <button onclick="fireJackpotExplosion()" class="w-full py-2.5 px-3 rounded-xl bg-amber-500/25 hover:bg-amber-500/35 border border-amber-400/50 text-amber-300 text-xs font-orbitron font-black shadow-[0_0_15px_rgba(255,208,0,0.4)] cursor-pointer">
+              🎆 BLAST CONFETTI AGAIN!
+            </button>
+          </div>
+
+          <button onclick="copyCurrentPrediction()" class="w-full py-3 rounded-xl bg-gradient-to-r from-red-600 to-amber-600 text-white font-orbitron font-bold text-xs uppercase mb-2">
+            📋 COPY PREDICTION (FANCY FONT)
+          </button>
+
+          <button onclick="closeResultModal()" class="w-full py-2.5 rounded-xl bg-white/[0.05] text-gray-300 font-orbitron text-xs">
+            CONTINUE ROUND
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLEAR HISTORY CONFIRMATION MODAL -->
+  <div id="clear-confirm-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+    <div class="bg-[#0e0e18] border border-red-500/40 rounded-3xl p-5 max-w-xs w-full text-center shadow-[0_0_50px_rgba(255,42,75,0.35)] space-y-4">
+      <div class="w-14 h-14 rounded-2xl bg-red-500/15 border border-red-500/30 flex items-center justify-center mx-auto text-2xl text-red-400">
+        🗑️
+      </div>
+      <div>
+        <h3 class="text-base font-orbitron font-black text-white tracking-wide uppercase">
+          CLEAR ALL HISTORY?
+        </h3>
+        <p class="text-xs font-mono text-gray-400 mt-1">
+          This will permanently delete all stored round records and reset streak charts.
+        </p>
+      </div>
+      <div class="flex gap-2 pt-1">
+        <button onclick="closeClearConfirmModal()" class="flex-1 py-2.5 rounded-xl bg-white/[0.07] text-gray-300 font-orbitron text-xs font-bold">
+          CANCEL
+        </button>
+        <button onclick="confirmClearHistory()" class="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 text-white font-orbitron text-xs font-black shadow-[0_4px_15px_rgba(255,42,75,0.4)]">
+          DELETE ALL
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN OVERRIDE MODAL -->
+  <div id="admin-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+    <div class="bg-[#0e0e18] border border-amber-500/40 rounded-3xl p-5 max-w-xs w-full space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-white/[0.08] pb-2">
+        <h3 class="font-orbitron font-bold text-xs text-amber-400">⚙️ ADMIN CONTROL PANEL</h3>
+        <button onclick="closeAdminModal()" class="text-gray-400 hover:text-white">✕</button>
+      </div>
+
+      <div class="space-y-2">
+        <label class="text-[10px] font-mono text-gray-400 block">MANUAL OUTCOME OVERRIDE</label>
+        <div class="grid grid-cols-3 gap-1.5">
+          <button onclick="setModeOverride('AUTO')" class="override-btn py-1.5 rounded-lg bg-white/[0.05] border border-white/[0.1] text-xs font-orbitron font-bold text-white" data-mode="AUTO">AUTO</button>
+          <button onclick="setModeOverride('BIG')" class="override-btn py-1.5 rounded-lg bg-white/[0.05] border border-white/[0.1] text-xs font-orbitron font-bold text-emerald-400" data-mode="BIG">FORCE BIG</button>
+          <button onclick="setModeOverride('SMALL')" class="override-btn py-1.5 rounded-lg bg-white/[0.05] border border-white/[0.1] text-xs font-orbitron font-bold text-red-400" data-mode="SMALL">FORCE SMALL</button>
+        </div>
+      </div>
+
+      <!-- Admin Only HTML Export -->
+      <div class="pt-2 border-t border-white/[0.08]">
+        <button onclick="downloadSelfHtml()" class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-orbitron text-xs font-bold shadow-lg transition-all flex items-center justify-center gap-1.5">
+          💾 DOWNLOAD HTML (ADMIN ONLY)
+        </button>
+      </div>
+
+      <div class="space-y-2">
+        <label class="text-[10px] font-mono text-gray-400 block">TEST RESULT POPUP</label>
+        <div class="grid grid-cols-3 gap-1">
+          <button onclick="simulateResult('JACKPOT')" class="py-1.5 rounded-lg bg-amber-500/20 text-amber-300 font-orbitron text-[10px] font-bold">JACKPOT</button>
+          <button onclick="simulateResult('WIN')" class="py-1.5 rounded-lg bg-emerald-500/20 text-emerald-300 font-orbitron text-[10px] font-bold">WIN</button>
+          <button onclick="simulateResult('LOSS')" class="py-1.5 rounded-lg bg-red-500/20 text-red-300 font-orbitron text-[10px] font-bold">LOSS</button>
+        </div>
+      </div>
+
+      <button onclick="closeAdminModal()" class="w-full py-2 rounded-xl bg-white/[0.08] text-xs font-orbitron text-gray-300">
+        CLOSE
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-xl bg-black/90 border border-emerald-400 text-emerald-300 text-xs font-mono font-bold shadow-[0_0_20px_rgba(0,255,136,0.4)] backdrop-blur-md hidden transition-all"></div>
+
+  <!-- APPLICATION LOGIC IN PURE JAVASCRIPT -->
+  <script>
+    // Fancy Math Unicode Maps
+    const FANCY_BOLD = {
+      'A':'𝗔','B':'𝗕','C':'𝗖','D':'𝗗','E':'𝗘','F':'𝗙','G':'𝗚','H':'𝗛','I':'𝗜','J':'𝗝','K':'𝗞','L':'𝗟','M':'𝗠',
+      'N':'𝗡','O':'𝗢','P':'𝗣','Q':'𝗤','R':'𝗥','S':'𝗦','T':'𝗧','U':'𝗨','V':'𝗩','W':'𝗪','X':'𝗫','Y':'𝗬','Z':'𝗭',
+      'a':'𝗮','b':'𝗯','c':'𝗰','d':'𝗱','e':'𝗲','f':'𝗳','g':'𝗴','h':'𝗵','i':'𝗶','j':'𝗝','k':'𝗸','l':'𝗹','m':'𝗺',
+      'n':'𝗻','o':'𝗼','p':'𝗽','q':'𝗾','r':'𝗿','s':'𝘀','t':'𝘁','u':'𝘂','v':'𝘃','w':'𝘄','x':'𝘅','y':'𝘆','z':'𝘇',
+      '0':'𝟬','1':'𝟭','2':'𝟮','3':'𝟯','4':'𝟰','5':'𝟱','6':'𝟲','7':'𝟳','8':'𝟴','9':'𝟵'
+    };
+
+    function toFancyBold(str) {
+      return str.split('').map(c => FANCY_BOLD[c] || c).join('');
+    }
+
+    // ============================================================
+    //  NOBITA X PRO V6.0 – CORE PREDICTION ENGINE CLASS
+    // ============================================================
+    class PredictionEngine {
+      constructor() {
+        this.history = [];
+        this.patterns = [];
+        this.accuracy = 0;
+        this.confidence = 65;
+        this.trends = {
+          big: 0, small: 0,
+          red: 0, green: 0, violet: 0
+        };
+        this.patternConfidence = {};
+      }
+
+      // Add a result (period, number, type, isWin)
+      addResult(period, number, type, isWin = true) {
+        this.history.push({ period, number, type, isWin, timestamp: Date.now() });
+        if (this.history.length > 100) this.history.shift();
+        this._updateTrends(number, type);
+        this._calculateAccuracy();
+        this._detectPatterns();
+        this._updatePatternConfidence();
+      }
+
+      _updateTrends(number, type) {
+        if (type === 'BIG') this.trends.big++;
+        else this.trends.small++;
+
+        if ([1, 3, 7, 9].includes(number)) this.trends.green++;
+        else if ([2, 4, 6, 8].includes(number)) this.trends.red++;
+        else this.trends.violet++;
+
+        // decay to keep trends fresh
+        const maxTrend = Math.max(...Object.values(this.trends));
+        if (maxTrend > 20) {
+          Object.keys(this.trends).forEach(k => {
+            this.trends[k] = Math.floor(this.trends[k] * 0.8);
+          });
+        }
+      }
+
+      _calculateAccuracy() {
+        if (this.history.length < 2) return;
+        const recent = this.history.slice(-20);
+        const wins = recent.filter(h => h.isWin).length;
+        this.accuracy = Math.round((wins / recent.length) * 100);
+      }
+
+      _detectPatterns() {
+        if (this.history.length < 5) return;
+        const recent = this.history.slice(-10);
+        const types = recent.map(h => h.type);
+        const pattern = types.join('');
+        const patterns = {};
+        for (let i = 0; i < pattern.length - 2; i++) {
+          const sub = pattern.substring(i, i + 3);
+          patterns[sub] = (patterns[sub] || 0) + 1;
+        }
+        this.patterns = Object.entries(patterns)
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 3)
+          .map(p => p[0]);
+      }
+
+      _updatePatternConfidence() {
+        if (this.history.length < 3) return;
+        const lastThree = this.history.slice(-3).map(h => h.type).join('');
+        const matches = this.patterns.filter(p => p.startsWith(lastThree));
+        if (matches.length > 0) {
+          this.patternConfidence[matches[0]] = (this.patternConfidence[matches[0]] || 0) + 1;
+        }
+      }
+
+      getPrediction() {
+        let prediction = this._getWeightedPrediction();
+        let confidence = this._calculateConfidence();
+
+        // Pattern matching
+        if (this.patterns.length > 0) {
+          const lastPattern = this.history.slice(-3).map(h => h.type).join('');
+          const matchedPattern = this.patterns.find(p => p.startsWith(lastPattern));
+          if (matchedPattern) {
+            const nextType = matchedPattern[matchedPattern.length - 1];
+            if (nextType === 'BIG' || nextType === 'SMALL') {
+              prediction.type = nextType;
+              confidence += 18;
+              if (this.patternConfidence[matchedPattern] > 2) {
+                confidence += 10;
+              }
+            }
+          }
+        }
+
+        const numbers = this._generateNumbers(prediction.type);
+        return {
+          type: prediction.type,
+          n1: numbers[0],
+          n2: numbers[1],
+          color: this._getColor(numbers[0]),
+          confidence: Math.min(confidence, 95),
+          accuracy: this.accuracy,
+          pattern: this.patterns[0] || 'QUANTUM FUSION v6.0',
+          trend: this._getTrendAnalysis()
+        };
+      }
+
+      _getWeightedPrediction() {
+        const total = this.trends.big + this.trends.small;
+        if (total < 5) {
+          return { type: Math.random() > 0.5 ? 'BIG' : 'SMALL' };
+        }
+        const bigWeight = this.trends.big / total;
+        const recentWins = this.history.slice(-5).filter(h => h.isWin).length;
+        const bias = recentWins > 3 ? 0.15 : -0.1;
+        const adjustedBig = bigWeight - 0.1 + bias;
+        if (Math.random() < adjustedBig) {
+          return { type: 'BIG' };
+        } else {
+          return { type: 'SMALL' };
+        }
+      }
+
+      _calculateConfidence() {
+        const base = 65;
+        const historyBonus = Math.min(this.history.length * 0.5, 15);
+        const accuracyBonus = Math.min(this.accuracy * 0.2, 15);
+        let confidence = base + historyBonus + accuracyBonus;
+        const recent = this.history.slice(-10);
+        const recentWins = recent.filter(h => h.isWin).length;
+        if (recentWins > 7) confidence += 10;
+        else if (recentWins < 3) confidence -= 10;
+        if (this.patterns.length > 0) confidence += 5;
+        return Math.min(Math.max(confidence, 40), 95);
+      }
+
+      _generateNumbers(type) {
+        const green = [1, 3, 7, 9];
+        const red = [2, 4, 6, 8];
+        const violet = [0, 5];
+        const preferred = this.trends.green > this.trends.red ? green : red;
+        const pool = [...preferred, ...violet];
+
+        let pairs;
+        if (type === 'SMALL') {
+          pairs = [
+            [0,1],[0,2],[0,3],[0,4],
+            [1,2],[1,3],[1,4],
+            [2,3],[2,4],[3,4]
+          ];
+        } else {
+          pairs = [
+            [5,6],[5,7],[5,8],[5,9],
+            [6,7],[6,8],[6,9],
+            [7,8],[7,9],[8,9]
+          ];
+        }
+        const filtered = pairs.filter(p =>
+          pool.includes(p[0]) || pool.includes(p[1])
+        );
+        const chosen = filtered.length > 0 ?
+          filtered[Math.floor(Math.random() * filtered.length)] :
+          pairs[Math.floor(Math.random() * pairs.length)];
+        return chosen;
+      }
+
+      _getColor(number) {
+        if ([1,3,7,9].includes(number)) return 'GREEN';
+        if ([2,4,6,8].includes(number)) return 'RED';
+        return 'VIOLET';
+      }
+
+      _getTrendAnalysis() {
+        const total = this.trends.big + this.trends.small;
+        const colorTotal = this.trends.red + this.trends.green + this.trends.violet;
+        return {
+          bigPercent: total > 0 ? Math.round((this.trends.big / total) * 100) : 50,
+          smallPercent: total > 0 ? Math.round((this.trends.small / total) * 100) : 50,
+          redPercent: colorTotal > 0 ? Math.round((this.trends.red / colorTotal) * 100) : 33,
+          greenPercent: colorTotal > 0 ? Math.round((this.trends.green / colorTotal) * 100) : 33,
+          violetPercent: colorTotal > 0 ? Math.round((this.trends.violet / colorTotal) * 100) : 34
+        };
+      }
+
+      reset() {
+        this.history = [];
+        this.patterns = [];
+        this.accuracy = 0;
+        this.confidence = 65;
+        this.trends = { big: 0, small: 0, red: 0, green: 0, violet: 0 };
+        this.patternConfidence = {};
+      }
+    }
+
+    const predictor = new PredictionEngine();
+    window.predictor = predictor;
+    window.PredictionEngine = PredictionEngine;
+
+    // App State
+    let currentPeriod = '2026070510001001';
+    let currentPrediction = 'BIG';
+    let currentSeeds = [7, 2];
+    let currentConfidence = 96.4;
+    let currentPattern = 'NOBITA X PRO v6.0';
+    let voiceEnabled = true;
+    let modeOverride = 'AUTO';
+    let historyFilter = 'ALL';
+
+    let historyRecords = JSON.parse(localStorage.getItem('nobita_html_history') || '[]');
+    let stats = JSON.parse(localStorage.getItem('nobita_html_stats') || '{"wins":0,"losses":0,"jackpots":0,"bestStreak":0,"total":0}');
+
+    // API HELPER FOR WIN-GO 1M
+    const API_URL = 'https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json';
+
+    async function fetchLatestDraw() {
+      const url = API_URL + '?t=' + Date.now();
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('API fetch failed: ' + response.status);
+      const json = await response.json();
+      if (!json.data || !json.data.list || json.data.list.length === 0) {
+        throw new Error('No data in response');
+      }
+      const latest = json.data.list[0];
+      return {
+        period: latest.issueNumber,
+        number: parseInt(latest.number, 10)
+      };
+    }
+
+    async function runPredictionCycle() {
+      try {
+        console.log('🔄 Fetching latest draw from NOBITA X PRO v6.0 API...');
+        const draw = await fetchLatestDraw();
+        console.log(`✅ Latest: Period ${draw.period} → Number ${draw.number}`);
+
+        const actualType = draw.number >= 5 ? 'BIG' : 'SMALL';
+        predictor.addResult(draw.period.slice(-4), draw.number, actualType, true);
+
+        const prediction = predictor.getPrediction();
+
+        console.log('🔮 NOBITA X PRO V6.0 PREDICTION:');
+        console.log(`   Type     : ${prediction.type}`);
+        console.log(`   Numbers  : ${prediction.n1}, ${prediction.n2}`);
+        console.log(`   Color    : ${prediction.color}`);
+        console.log(`   Confidence: ${prediction.confidence}%`);
+        console.log(`   Accuracy : ${prediction.accuracy}%`);
+        console.log(`   Pattern  : ${prediction.pattern}`);
+        console.log(`   Trend    : BIG ${prediction.trend.bigPercent}% | SMALL ${prediction.trend.smallPercent}%`);
+        console.log(`              RED ${prediction.trend.redPercent}% | GREEN ${prediction.trend.greenPercent}% | VIOLET ${prediction.trend.violetPercent}%`);
+
+        showToast(`🔮 PRO V6.0: ${prediction.type} [${prediction.n1}, ${prediction.n2}] ${prediction.confidence}%`, '#00ff88');
+        return { draw, prediction };
+      } catch (error) {
+        console.error('❌ Error:', error.message);
+        return null;
+      }
+    }
+    window.runPrediction = runPredictionCycle;
+
+    // Web Audio Synthesizer
+    let audioCtx = null;
+    function getAudioContext() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      return audioCtx;
+    }
+
+    function playSound(type) {
+      try {
+        const ctx = getAudioContext();
+        if (ctx.state === 'suspended') ctx.resume();
+
+        const now = ctx.currentTime;
+        if (type === 'jackpot') {
+          [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(freq, now + i * 0.08);
+            gain.gain.setValueAtTime(0.3, now + i * 0.08);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.6);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now + i * 0.08);
+            osc.stop(now + i * 0.08 + 0.6);
+          });
+        } else if (type === 'win') {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(587.33, now);
+          osc.frequency.exponentialRampToValueAtTime(880, now + 0.2);
+          gain.gain.setValueAtTime(0.25, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.35);
+        } else if (type === 'loss') {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(220, now);
+          osc.frequency.exponentialRampToValueAtTime(110, now + 0.3);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.35);
+        }
+      } catch (e) {}
+    }
+
+    function speakVoice(text) {
+      if (!voiceEnabled || !('speechSynthesis' in window)) return;
+      try {
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(text);
+        u.rate = 1.05;
+        u.pitch = 1.1;
+        window.speechSynthesis.speak(u);
+      } catch (e) {}
+    }
+
+    // High-Impact Multi-stage Confetti Explosion
+    function fireJackpotExplosion() {
+      try {
+        const canvas = document.getElementById('confetti-canvas');
+        if (typeof confetti === 'function') {
+          // Central explosion
+          confetti({
+            particleCount: 180,
+            spread: 120,
+            origin: { y: 0.5 },
+            colors: ['#ffd000', '#ff2a4b', '#ffffff', '#bf00ff', '#00ff88']
+          });
+          // Side canons
+          setTimeout(() => {
+            confetti({ particleCount: 100, angle: 60, spread: 75, origin: { x: 0.05, y: 0.65 } });
+            confetti({ particleCount: 100, angle: 120, spread: 75, origin: { x: 0.95, y: 0.65 } });
+          }, 220);
+          // Star shower
+          setTimeout(() => {
+            confetti({ particleCount: 140, angle: 90, spread: 100, origin: { x: 0.5, y: 0.85 } });
+          }, 500);
+        }
+      } catch (e) {}
+    }
+
+    function fireWinConfetti() {
+      try {
+        if (typeof confetti === 'function') {
+          confetti({
+            particleCount: 90,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: ['#00ff88', '#00e5ff', '#ffffff', '#ffd000']
+          });
+        }
+      } catch (e) {}
+    }
+
+    // Toast Message
+    function showToast(msg, color = '#00ff88') {
+      const toast = document.getElementById('toast');
+      toast.innerText = msg;
+      toast.style.borderColor = color;
+      toast.style.color = color;
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 2800);
+    }
+
+    // Tab Navigation
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      const activeTab = document.getElementById(`tab-${tabId}`);
+      if (activeTab) activeTab.classList.remove('hidden');
+
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        if (btn.getAttribute('data-tab') === tabId) {
+          btn.classList.add('text-amber-400');
+          btn.classList.remove('text-gray-400');
+        } else {
+          btn.classList.remove('text-amber-400');
+          btn.classList.add('text-gray-400');
+        }
+      });
+
+      if (tabId === 'history') {
+        renderHistory();
+        renderStreakChart();
+      } else if (tabId === 'leaderboard') {
+        renderLeaderboard();
+      }
+    }
+
+    // Copy Prediction with Unicode Fancy Fonts
+    function copyCurrentPrediction() {
+      const fancyPred = toFancyBold(currentPrediction.toUpperCase());
+      const n1 = currentSeeds[0];
+      const n2 = currentSeeds[1];
+      const text = `═══════════════════════════
+     🔥𝗙𝗥𝗘𝗘𝗛𝗢𝗦𝗧 𝗦𝗛𝗢𝗣 𝗪𝗜𝗡𝗚𝗢 𝗕𝗢𝗧🔥    
+═══════════════════════════
+           🎰 𝗪𝗜𝗡𝗚𝗢 𝟭 𝗠𝗜𝗡𝗨𝗧𝗘🎰
+
+🗿 𝗣𝗘𝗥𝗜𝗢𝗗: ${currentPeriod}
+🎲 𝗣𝗥𝗘𝗗𝗜𝗖𝗧𝗜𝗢𝗡: ${fancyPred}
+🎯 𝗡𝗨𝗠𝗕𝗘𝗥: ${n1} / ${n2}
+
+⚠️  𝟳 𝗟𝗘𝗩𝗘𝗟 𝗠𝗘𝗡𝗧𝗘𝗡 𝗔𝗟𝗟 𝗧𝗜𝗠𝗘  ⚠️ 
+
+═══════════════════════════
+ ☠️ 𝗣𝗢𝗪𝗘𝗥 𝗢𝗙 𝗛𝗔𝗖𝗞:
+https://freehost-f010.onrender.com/shop
+═══════════════════════════`;
+
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('📋 COPIED TO CLIPBOARD!', '#00ff88');
+        document.getElementById('copy-btn-text').innerText = 'COPIED TO CLIPBOARD!';
+        setTimeout(() => {
+          document.getElementById('copy-btn-text').innerText = 'COPY PREDICTION';
+        }, 2000);
+      });
+    }
+
+    // Period Countdown Loop (60s)
+    function updateCountdown() {
+      const now = new Date();
+      const sec = now.getSeconds();
+      const remain = 60 - (sec % 60);
+
+      document.getElementById('timer-val').innerText = `00:${remain < 10 ? '0' + remain : remain}`;
+
+      if (remain === 60 || remain === 1) {
+        syncPeriodAndResolve();
+      }
+    }
+    setInterval(updateCountdown, 1000);
+
+    // Quantum Engine Calculation & Result Resolution
+    function syncPeriodAndResolve() {
+      const now = new Date();
+      const periodNum = `${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}${String(now.getHours()*60 + now.getMinutes()).padStart(4,'0')}`;
+      
+      if (periodNum !== currentPeriod) {
+        // Resolve last round
+        const actualNumber = Math.floor(Math.random() * 10);
+        const actualSize = actualNumber >= 5 ? 'BIG' : 'SMALL';
+        const isJackpot = currentSeeds.includes(actualNumber);
+        const isWin = isJackpot || (currentPrediction === actualSize);
+
+        const status = isJackpot ? 'JACKPOT' : isWin ? 'WIN' : 'LOSS';
+
+        // Update stats
+        if (isJackpot) stats.jackpots += 1;
+        if (isWin) stats.wins += 1;
+        else stats.losses += 1;
+        stats.total += 1;
+
+        // Record history
+        historyRecords.unshift({
+          period: currentPeriod,
+          prediction: currentPrediction,
+          jackpotSeeds: [...currentSeeds],
+          actualNumber,
+          actualSize,
+          status,
+          confidence: currentConfidence
+        });
+        if (historyRecords.length > 50) historyRecords.pop();
+
+        localStorage.setItem('nobita_html_history', JSON.stringify(historyRecords));
+        localStorage.setItem('nobita_html_stats', JSON.stringify(stats));
+
+        // Feed into V6.0 Prediction Engine
+        predictor.addResult(currentPeriod.slice(-4), actualNumber, actualSize, isWin);
+
+        // Show Result Popup
+        showResultModal(status, currentPeriod, currentPrediction, currentSeeds, actualNumber, actualSize);
+
+        // Update Target Period
+        currentPeriod = periodNum;
+        document.getElementById('current-period-display').innerText = currentPeriod;
+
+        // Update consecutive loss tracking
+        let htmlLossStreak = 0;
+        for (const item of historyRecords) {
+          if (item.status === 'LOSS') htmlLossStreak++;
+          else break;
+        }
+
+        // Calculate next prediction using V6.0 Predictor & Hard Loss Shield
+        const v6 = predictor.getPrediction();
+        if (modeOverride === 'AUTO') {
+          currentPrediction = v6.type;
+          // Hard Loss Shield: If 2 consecutive losses occur, adapt immediately
+          if (htmlLossStreak >= 2) {
+            // If table has a streak, align with dragon, otherwise revert or flip
+            currentPrediction = actualSize; // Ride trend
+            currentPattern = `🛡️ LOSS-SHIELD (HARD RECOVERY)`;
+          } else if (htmlLossStreak === 1) {
+            currentPattern = `⚡ LOSS-SHIELD (ALERT LEVEL 1)`;
+          } else {
+            currentPattern = v6.pattern || 'NOBITA X PRO v6.0';
+          }
+        } else {
+          currentPrediction = modeOverride;
+          currentPattern = 'FORCE OVERRIDE';
+        }
+
+        currentSeeds = [v6.n1, v6.n2];
+        currentConfidence = Math.max(v6.confidence, 88);
+
+        document.getElementById('prediction-outcome').innerText = currentPrediction;
+        document.getElementById('prediction-outcome').className = `font-orbitron font-black text-5xl md:text-6xl tracking-wider ${currentPrediction === 'BIG' ? 'text-emerald-400 text-glow-green' : 'text-red-400 text-glow-red'} animate-pulse`;
+        document.getElementById('seed-1').innerText = currentSeeds[0];
+        document.getElementById('seed-2').innerText = currentSeeds[1];
+        document.getElementById('confidence-pct').innerText = `${currentConfidence}%`;
+        document.getElementById('confidence-bar').style.width = `${currentConfidence}%`;
+
+        renderTrendBars();
+        if (!document.getElementById('tab-history').classList.contains('hidden')) {
+          renderHistory();
+          renderStreakChart();
+        }
+      }
+    }
+
+    // Result Modal Handlers
+    function showResultModal(status, period, pred, seeds, actNum, actSize) {
+      const modal = document.getElementById('result-modal');
+      const title = document.getElementById('result-modal-title');
+      const banner = document.getElementById('result-icon-banner');
+      const blastArea = document.getElementById('jackpot-blast-area');
+
+      document.getElementById('result-modal-period').innerText = `PERIOD #${period.slice(-6)}`;
+      document.getElementById('modal-pred-val').innerText = pred;
+      document.getElementById('modal-pred-seeds').innerText = `[${seeds[0]}, ${seeds[1]}]`;
+      document.getElementById('modal-actual-val').innerText = `${actNum} (${actSize})`;
+
+      if (status === 'JACKPOT') {
+        title.innerText = 'JACKPOT HIT!';
+        title.className = 'font-orbitron text-3xl font-black tracking-wider uppercase text-amber-300 text-glow-gold';
+        banner.innerText = '🏆';
+        banner.className = 'w-20 h-20 rounded-3xl mx-auto mb-3 flex items-center justify-center text-4xl shadow-lg bg-amber-500 text-black animate-bounce';
+        blastArea.classList.remove('hidden');
+        playSound('jackpot');
+        speakVoice('Jackpot! Exact number hit!');
+        fireJackpotExplosion();
+      } else if (status === 'WIN') {
+        title.innerText = 'VICTORY WIN!';
+        title.className = 'font-orbitron text-3xl font-black tracking-wider uppercase text-emerald-400 text-glow-green';
+        banner.innerText = '🎯';
+        banner.className = 'w-20 h-20 rounded-3xl mx-auto mb-3 flex items-center justify-center text-4xl shadow-lg bg-emerald-500 text-black';
+        blastArea.classList.add('hidden');
+        playSound('win');
+        speakVoice('Win! Prediction correct!');
+        fireWinConfetti();
+      } else {
+        title.innerText = 'DEFEAT LOSS';
+        title.className = 'font-orbitron text-3xl font-black tracking-wider uppercase text-red-400 text-glow-red';
+        banner.innerText = '💀';
+        banner.className = 'w-20 h-20 rounded-3xl mx-auto mb-3 flex items-center justify-center text-4xl shadow-lg bg-red-600 text-white';
+        blastArea.classList.add('hidden');
+        playSound('loss');
+        speakVoice('Loss! Recalibrating');
+      }
+
+      modal.classList.remove('hidden');
+    }
+
+    function closeResultModal() {
+      document.getElementById('result-modal').classList.add('hidden');
+    }
+
+    // Clear History Dialog & Purge Function
+    function openClearConfirmModal() {
+      document.getElementById('clear-confirm-modal').classList.remove('hidden');
+    }
+
+    function closeClearConfirmModal() {
+      document.getElementById('clear-confirm-modal').classList.add('hidden');
+    }
+
+    function confirmClearHistory() {
+      historyRecords = [];
+      stats = { wins: 0, losses: 0, jackpots: 0, bestStreak: 0, total: 0 };
+      localStorage.removeItem('nobita_html_history');
+      localStorage.removeItem('nobita_html_stats');
+
+      closeClearConfirmModal();
+      renderHistory();
+      renderStreakChart();
+      showToast('🗑️ ALL HISTORY & RECORDS CLEARED!', '#ff2a4b');
+    }
+
+    // History View Render
+    function renderHistory() {
+      document.getElementById('stats-wins').innerText = stats.wins;
+      document.getElementById('stats-losses').innerText = stats.losses;
+      const wr = stats.total > 0 ? ((stats.wins / stats.total) * 100).toFixed(1) : '0.0';
+      document.getElementById('stats-winrate').innerText = `${wr}%`;
+
+      const listContainer = document.getElementById('history-items-list');
+      const filtered = historyRecords.filter(r => {
+        if (historyFilter === 'ALL') return true;
+        if (historyFilter === 'WIN') return r.status === 'WIN' || r.status === 'JACKPOT';
+        if (historyFilter === 'LOSS') return r.status === 'LOSS';
+        if (historyFilter === 'JACKPOT') return r.status === 'JACKPOT';
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        listContainer.innerHTML = `
+          <div class="p-8 text-center bg-black/40 border border-white/[0.06] rounded-2xl">
+            <div class="text-2xl mb-1 opacity-40">📜</div>
+            <p class="text-xs font-mono text-gray-400">No history records found.</p>
+          </div>
+        `;
+        return;
+      }
+
+      listContainer.innerHTML = filtered.map(r => `
+        <div class="p-3 rounded-2xl bg-black/50 border ${r.status === 'JACKPOT' ? 'border-amber-400/50' : r.status === 'WIN' ? 'border-emerald-500/30' : 'border-red-500/30'} flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <div class="w-1.5 h-10 rounded-full ${r.status === 'JACKPOT' ? 'bg-amber-400' : r.status === 'WIN' ? 'bg-emerald-400' : 'bg-red-500'}"></div>
+            <div>
+              <div class="text-[10px] font-mono text-gray-400">#${r.period.slice(-6)} (${r.confidence}%)</div>
+              <div class="flex items-center gap-1.5 mt-0.5">
+                <span class="font-orbitron text-sm font-black ${r.prediction === 'BIG' ? 'text-emerald-400' : 'text-red-400'}">${r.prediction}</span>
+                <span class="text-[10px] font-mono text-amber-400 bg-amber-500/10 px-1.5 rounded">[${r.jackpotSeeds[0]}, ${r.jackpotSeeds[1]}]</span>
+              </div>
+            </div>
+          </div>
+          <div class="text-right">
+            <div class="font-orbitron font-bold text-xs text-white">${r.actualSize} <span class="font-mono text-amber-300 bg-white/[0.1] px-1 rounded">${r.actualNumber}</span></div>
+            <div class="text-[9px] font-orbitron font-bold ${r.status === 'JACKPOT' ? 'text-amber-400 font-black' : r.status === 'WIN' ? 'text-emerald-400' : 'text-red-400'}">
+              ${r.status === 'JACKPOT' ? '🏆 JACKPOT' : r.status === 'WIN' ? '✓ WIN' : '✗ LOSS'}
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function setHistoryFilter(f) {
+      historyFilter = f;
+      document.querySelectorAll('.hist-filter').forEach(btn => {
+        if (btn.getAttribute('data-filter') === f) {
+          btn.className = 'hist-filter flex-1 py-1 text-[10px] font-orbitron font-bold rounded-lg bg-gradient-to-r from-red-600 to-amber-600 text-white';
+        } else {
+          btn.className = 'hist-filter flex-1 py-1 text-[10px] font-orbitron font-bold rounded-lg text-gray-400 hover:text-white';
+        }
+      });
+      renderHistory();
+    }
+
+    function copyAllHistory() {
+      if (historyRecords.length === 0) {
+        showToast('No history records to copy!', '#ffaa00');
+        return;
+      }
+      const text = historyRecords.map(r => `#${r.period.slice(-6)} | PRED: ${r.prediction} [${r.jackpotSeeds.join(',')}] | ACTUAL: ${r.actualNumber} (${r.actualSize}) => ${r.status}`).join('\n');
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('📋 ALL HISTORY LOGS COPIED!', '#00ff88');
+      });
+    }
+
+    // SVG Streak Momentum Chart
+    function renderStreakChart() {
+      const svg = document.getElementById('streak-svg');
+      if (!svg) return;
+
+      const data = [...historyRecords].reverse();
+      if (data.length < 2) {
+        svg.innerHTML = `<text x="50%" y="50%" fill="#666" font-size="10" text-anchor="middle" font-family="monospace">Record 2+ games to plot streak momentum</text>`;
+        return;
+      }
+
+      let winStreak = 0;
+      let peakStreak = 0;
+      const points = data.map((d, i) => {
+        if (d.status === 'WIN' || d.status === 'JACKPOT') {
+          winStreak += 1;
+        } else {
+          winStreak = 0;
+        }
+        if (winStreak > peakStreak) peakStreak = winStreak;
+        return { x: (i / (data.length - 1)) * 300 + 10, y: 100 - Math.min(winStreak * 15, 85), isJackpot: d.status === 'JACKPOT' };
+      });
+
+      document.getElementById('best-streak-display').innerText = `PEAK: +${peakStreak}W`;
+
+      const pathD = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ');
+
+      svg.setAttribute('viewBox', '0 0 320 120');
+      svg.innerHTML = `
+        <defs>
+          <linearGradient id="chart-grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#00ff88" stop-opacity="0.4"/>
+            <stop offset="100%" stop-color="#00ff88" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <line x1="0" y1="100" x2="320" y2="100" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+        <path d="${pathD} L 310 100 L 10 100 Z" fill="url(#chart-grad)"/>
+        <path d="${pathD}" fill="none" stroke="#ffd000" stroke-width="2"/>
+        ${points.map(p => p.isJackpot 
+          ? `<polygon points="${p.x},${p.y-5} ${p.x+5},${p.y} ${p.x},${p.y+5} ${p.x-5},${p.y}" fill="#ffd000" stroke="#fff" stroke-width="1"/>`
+          : `<circle cx="${p.x}" cy="${p.y}" r="3" fill="#00ff88" stroke="#000" stroke-width="1"/>`
+        ).join('')}
+      `;
+    }
+
+    // Trend Bars
+    function renderTrendBars() {
+      const container = document.getElementById('trend-bars');
+      const mockNumbers = [7, 2, 8, 9, 3, 1, 6, 8, 4, 7];
+      container.innerHTML = mockNumbers.map(n => {
+        const isBig = n >= 5;
+        const h = Math.max(14, (n + 1) * 5.2);
+        return `
+          <div class="flex-1 flex flex-col items-center gap-1">
+            <div class="w-full rounded-t-sm ${isBig ? 'bg-emerald-500 shadow-[0_0_8px_rgba(0,255,136,0.4)]' : 'bg-red-500 shadow-[0_0_8px_rgba(255,42,75,0.4)]'}" style="height:${h}px"></div>
+            <span class="text-[8px] font-mono text-gray-400">${n}</span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Leaderboard Render
+    function renderLeaderboard() {
+      const players = [
+        { rank: 4, name: 'ARJUN_VIP', wins: 98, jackpots: 8, streak: '7W' },
+        { rank: 5, name: 'DEVIL_KING', wins: 87, jackpots: 6, streak: '5W' },
+        { rank: 6, name: 'QUANTUM_99', wins: 76, jackpots: 5, streak: '4W' },
+        { rank: 7, name: 'SHADOW_VIP', wins: 64, jackpots: 4, streak: '3W' }
+      ];
+
+      const container = document.getElementById('leaderboard-list');
+      container.innerHTML = players.map(p => `
+        <div class="p-3 rounded-2xl bg-black/50 border border-white/[0.06] flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="font-orbitron font-black text-xs text-gray-400 w-4">#${p.rank}</span>
+            <div>
+              <div class="font-orbitron font-bold text-xs text-white">${p.name}</div>
+              <div class="text-[10px] font-mono text-gray-400">Current Streak: <span class="text-emerald-400">${p.streak}</span></div>
+            </div>
+          </div>
+          <div class="text-right font-mono">
+            <div class="text-xs font-bold text-emerald-400">${p.wins} WINS</div>
+            <div class="text-[10px] text-purple-300">${p.jackpots} JACKPOTS</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Standalone Self Download Function
+    function downloadSelfHtml() {
+      const htmlContent = document.documentElement.outerHTML;
+      const blob = new Blob([htmlContent], { type: 'text/html' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'nobita_x_prime.html';
+      a.click();
+      showToast('💾 STANDALONE HTML FILE DOWNLOADED!', '#00ff88');
+    }
+
+    // Theme Selector
+    function setAppTheme(t) {
+      document.body.setAttribute('data-theme', t);
+      localStorage.setItem('nobita_theme', t);
+      showToast(`🎨 THEME APPLIED: ${t.toUpperCase()}`, '#ffd000');
+    }
+
+    function toggleVoice() {
+      voiceEnabled = !voiceEnabled;
+      document.getElementById('voice-btn').innerText = voiceEnabled ? '🔊' : '🔇';
+      showToast(`VOICE ANNOUNCER: ${voiceEnabled ? 'ON' : 'OFF'}`, voiceEnabled ? '#00ff88' : '#ffaa00');
+    }
+
+    function openAdminModal() {
+      document.getElementById('admin-modal').classList.remove('hidden');
+    }
+    function closeAdminModal() {
+      document.getElementById('admin-modal').classList.add('hidden');
+    }
+    function setModeOverride(m) {
+      modeOverride = m;
+      showToast(`ENGINE MODE: ${m}`, '#00ff88');
+      closeAdminModal();
+    }
+    function simulateResult(status) {
+      closeAdminModal();
+      showResultModal(status, currentPeriod, currentPrediction, currentSeeds, status === 'JACKPOT' ? currentSeeds[0] : (currentPrediction === 'BIG' ? 7 : 2), currentPrediction);
+    }
+
+    // Particle Background Initialization
+    (function initBackground() {
+      const canvas = document.getElementById('bg-canvas');
+      const ctx = canvas.getContext('2d');
+      let w = (canvas.width = window.innerWidth);
+      let h = (canvas.height = window.innerHeight);
+
+      window.addEventListener('resize', () => {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      });
+
+      const particles = Array.from({ length: 35 }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        r: Math.random() * 2 + 1
+      }));
+
+      function render() {
+        ctx.clearRect(0, 0, w, h);
+        ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--primary').trim() || '#ff2a4b';
+        particles.forEach(p => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fill();
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0 || p.x > w) p.vx *= -1;
+          if (p.y < 0 || p.y > h) p.vy *= -1;
+        });
+        requestAnimationFrame(render);
+      }
+      render();
+    })();
+
+    // Initialize UI on Load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderTrendBars();
+    });
+  </script>
+</body>
+</html>

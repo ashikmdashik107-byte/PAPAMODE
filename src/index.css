@@ -1,0 +1,863 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #00ff88;
+  --glow: rgba(0, 255, 136, 0.55);
+  --bg: #011208;
+  --bg-gradient: radial-gradient(circle at 50% 0%, rgba(0, 255, 136, 0.25) 0%, rgba(2, 28, 14, 0.96) 50%, #010d06 100%);
+  --panel: #03200f;
+  --panel-card: rgba(4, 34, 18, 0.9);
+  --border: rgba(0, 255, 136, 0.4);
+  --border-subtle: rgba(0, 255, 136, 0.18);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --theme-accent: #00ff88;
+  --green: #00ff88;
+  --red: #ff2a4b;
+  --gold: #ffd000;
+  --purple: #bf00ff;
+  --blue: #00e5ff;
+}
+
+/* Master Animation Killswitch: Completely disables all CSS animations when data-animations="false" */
+html[data-animations="false"] *,
+body[data-animations="false"] *,
+#app-root-shell[data-animations="false"] *,
+[data-animations="false"] * {
+  animation: none !important;
+  transition: none !important;
+}
+
+html[data-animations="false"] .anim-ball-levitate,
+html[data-animations="false"] .anim-norbe,
+html[data-animations="false"] .anim-ball-shimmer,
+html[data-animations="false"] .anim-jolmol,
+html[data-animations="false"] .jolmol-brand-text,
+html[data-animations="false"] .anim-eagle-wings,
+html[data-animations="false"] .anim-quantum-laser,
+html[data-animations="false"] .anim-orbital-ring-1,
+html[data-animations="false"] .anim-orbital-ring-2,
+html[data-animations="false"] .anim-seed-reactor,
+html[data-animations="false"] .anim-radar-wave,
+html[data-animations="false"] .anim-critical-alarm,
+html[data-animations="false"] .anim-pulse-glow,
+html[data-animations="false"] .rgb-text,
+html[data-animations="false"] .rgb-gradient-animated,
+html[data-animations="false"] .rgb-box-pulse,
+html[data-animations="false"] .hazard-stripes {
+  animation: none !important;
+  transform: none !important;
+}
+
+[data-theme="blood-red"] {
+  --primary: #ff2a4b;
+  --glow: rgba(255, 42, 75, 0.5);
+  --bg: #060103;
+  --bg-gradient: radial-gradient(circle at 50% 0%, rgba(255, 42, 75, 0.22) 0%, rgba(14, 2, 6, 0.95) 50%, #050103 100%);
+  --panel: #0f0205;
+  --panel-card: rgba(22, 4, 9, 0.85);
+  --border: rgba(255, 42, 75, 0.35);
+  --border-subtle: rgba(255, 42, 75, 0.15);
+  --theme-accent: #ff2a4b;
+}
+
+[data-theme="cyber-neon"] {
+  --primary: #00ffe7;
+  --glow: rgba(0, 255, 231, 0.5);
+  --bg: #010d14;
+  --bg-gradient: radial-gradient(circle at 50% 0%, rgba(0, 255, 231, 0.22) 0%, rgba(2, 20, 31, 0.95) 50%, #010d14 100%);
+  --panel: #031724;
+  --panel-card: rgba(5, 30, 46, 0.85);
+  --border: rgba(0, 255, 231, 0.35);
+  --border-subtle: rgba(0, 255, 231, 0.15);
+  --theme-accent: #00ffe7;
+}
+
+[data-theme="gold-elite"] {
+  --primary: #ffd000;
+  --glow: rgba(255, 208, 0, 0.5);
+  --bg: #0e0a01;
+  --bg-gradient: radial-gradient(circle at 50% 0%, rgba(255, 208, 0, 0.25) 0%, rgba(24, 18, 3, 0.95) 50%, #0d0a01 100%);
+  --panel: #181204;
+  --panel-card: rgba(34, 26, 6, 0.85);
+  --border: rgba(255, 208, 0, 0.35);
+  --border-subtle: rgba(255, 208, 0, 0.15);
+  --theme-accent: #ffd000;
+}
+
+[data-theme="amethyst"] {
+  --primary: #c742ff;
+  --glow: rgba(199, 66, 255, 0.5);
+  --bg: #0e0218;
+  --bg-gradient: radial-gradient(circle at 50% 0%, rgba(199, 66, 255, 0.25) 0%, rgba(22, 4, 38, 0.95) 50%, #0e0218 100%);
+  --panel: #19052b;
+  --panel-card: rgba(32, 8, 54, 0.85);
+  --border: rgba(199, 66, 255, 0.35);
+  --border-subtle: rgba(199, 66, 255, 0.15);
+  --theme-accent: #c742ff;
+}
+
+[data-theme="emerald"] {
+  --primary: #00ff88;
+  --glow: rgba(0, 255, 136, 0.5);
+  --bg: #011208;
+  --bg-gradient: radial-gradient(circle at 50% 0%, rgba(0, 255, 136, 0.22) 0%, rgba(2, 28, 14, 0.95) 50%, #011208 100%);
+  --panel: #031f0f;
+  --panel-card: rgba(5, 38, 19, 0.85);
+  --border: rgba(0, 255, 136, 0.35);
+  --border-subtle: rgba(0, 255, 136, 0.15);
+  --theme-accent: #00ff88;
+}
+
+[data-theme="ocean"] {
+  --primary: #00a2ff;
+  --glow: rgba(0, 162, 255, 0.5);
+  --bg: #010a1a;
+  --bg-gradient: radial-gradient(circle at 50% 0%, rgba(0, 162, 255, 0.22) 0%, rgba(2, 20, 44, 0.95) 50%, #010a1a 100%);
+  --panel: #031631;
+  --panel-card: rgba(5, 28, 60, 0.85);
+  --border: rgba(0, 162, 255, 0.35);
+  --border-subtle: rgba(0, 162, 255, 0.15);
+  --theme-accent: #00a2ff;
+}
+
+[data-theme="matrix"] {
+  --primary: #00ff41;
+  --glow: rgba(0, 255, 65, 0.5);
+  --bg: #010a02;
+  --bg-gradient: radial-gradient(circle at 50% 0%, rgba(0, 255, 65, 0.22) 0%, rgba(2, 22, 6, 0.95) 50%, #010a02 100%);
+  --panel: #031705;
+  --panel-card: rgba(5, 30, 9, 0.85);
+  --border: rgba(0, 255, 65, 0.35);
+  --border-subtle: rgba(0, 255, 65, 0.15);
+  --theme-accent: #00ff41;
+}
+
+body {
+  font-family: 'Poppins', 'Outfit', sans-serif;
+  background-color: var(--bg) !important;
+  background-image: var(--bg-gradient) !important;
+  background-attachment: fixed;
+  color: var(--text-main);
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+.font-orbitron {
+  font-family: 'Orbitron', monospace;
+}
+
+.font-bebas {
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.font-rajdhani {
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.font-mono-tech {
+  font-family: 'Share Tech Mono', monospace;
+}
+
+/* Custom glowing effects */
+.glow-primary {
+  box-shadow: 0 0 25px var(--glow);
+}
+
+.text-glow-primary {
+  text-shadow: 0 0 16px var(--glow);
+}
+
+.text-glow-green {
+  text-shadow: 0 0 16px rgba(0, 255, 136, 0.6);
+}
+
+.text-glow-red {
+  text-shadow: 0 0 16px rgba(255, 42, 75, 0.6);
+}
+
+.text-glow-gold {
+  text-shadow: 0 0 18px rgba(255, 208, 0, 0.6);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Scanline and background animations */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1000%); }
+}
+
+.scanline-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  opacity: 0.6;
+  animation: scanline 4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+}
+
+.pulse-glow-anim {
+  animation: pulseGlow 2.4s ease-in-out infinite;
+}
+
+@keyframes floatAnim {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.float-slow {
+  animation: floatAnim 3.5s ease-in-out infinite;
+}
+
+/* Subtle Screen Shake Animation for High Confidence Predictions */
+@keyframes subtleShake {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  12% { transform: translate(-3px, 1.5px) rotate(-0.6deg); }
+  24% { transform: translate(3px, -1.5px) rotate(0.6deg); }
+  36% { transform: translate(-2.5px, -1px) rotate(-0.4deg); }
+  48% { transform: translate(2.5px, 1px) rotate(0.4deg); }
+  60% { transform: translate(-1.5px, 0.8px) rotate(-0.2deg); }
+  75% { transform: translate(1.5px, -0.6px) rotate(0.2deg); }
+  90% { transform: translate(-0.5px, 0.3px) rotate(0deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.animate-subtle-shake {
+  animation: subtleShake 0.65s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes highConfidenceFlash {
+  0% {
+    box-shadow: 0 0 0 rgba(255, 208, 0, 0);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  30% {
+    box-shadow: 0 0 40px rgba(255, 208, 0, 0.45), 0 0 60px rgba(255, 42, 75, 0.3);
+    border-color: rgba(255, 208, 0, 0.65);
+  }
+  100% {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 42, 75, 0.08);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.high-confidence-glow {
+  animation: highConfidenceFlash 1.1s ease-out;
+}
+
+/* RGB ALL ROUNDER & PREMIUM LUXURY ANIMATIONS */
+@keyframes rgbShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.rgb-gradient-animated {
+  background: linear-gradient(90deg, #ff0055, #ff9900, #ffee00, #00ff66, #00ffff, #0066ff, #9900ff, #ff0055);
+  background-size: 400% 400%;
+  animation: rgbShift 6s ease infinite;
+}
+
+.rgb-text {
+  background: linear-gradient(90deg, #ff2a4b, #ffd000, #00ff88, #00e5ff, #c742ff, #ff2a4b);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rgbShift 4s ease infinite;
+}
+
+@keyframes rgbBorderPulse {
+  0%, 100% {
+    border-color: rgba(255, 42, 75, 0.7);
+    box-shadow: 0 0 20px rgba(255, 42, 75, 0.4), inset 0 0 15px rgba(255, 42, 75, 0.15);
+  }
+  25% {
+    border-color: rgba(255, 208, 0, 0.7);
+    box-shadow: 0 0 20px rgba(255, 208, 0, 0.4), inset 0 0 15px rgba(255, 208, 0, 0.15);
+  }
+  50% {
+    border-color: rgba(0, 255, 136, 0.7);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.4), inset 0 0 15px rgba(0, 255, 136, 0.15);
+  }
+  75% {
+    border-color: rgba(0, 229, 255, 0.7);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.4), inset 0 0 15px rgba(0, 229, 255, 0.15);
+  }
+}
+
+.rgb-box-pulse {
+  animation: rgbBorderPulse 4s ease-in-out infinite;
+}
+
+@keyframes rotateBorder {
+  0% { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}
+
+.rgb-aura-glow {
+  position: relative;
+}
+
+/* ==========================================================
+   5 POWERFUL CYBER-QUANTUM ANIMATIONS (NOBITA X PRIME)
+   ========================================================== */
+
+/* 1. QUANTUM HOLOGRAPHIC PLASMA LASER SCANNER */
+@keyframes quantumLaserScan {
+  0% {
+    top: -10%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  85% {
+    opacity: 0.9;
+  }
+  100% {
+    top: 110%;
+    opacity: 0;
+  }
+}
+
+.anim-quantum-laser {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, #00ff88 20%, #ffd000 50%, #ff2a4b 80%, transparent 100%);
+  box-shadow: 0 0 15px #00ff88, 0 0 25px #ffd000;
+  animation: quantumLaserScan 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+  z-index: 15;
+}
+
+/* 2. 9X JACKPOT DUAL ORBITAL PARTICLE REACTOR */
+@keyframes orbitalSpinClockwise {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.06); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes orbitalSpinCounter {
+  0% { transform: rotate(360deg) scale(1); }
+  50% { transform: rotate(180deg) scale(0.95); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+@keyframes goldLightningSurge {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(255, 208, 0, 0.35), inset 0 0 10px rgba(255, 208, 0, 0.2);
+    border-color: rgba(255, 208, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 208, 0, 0.8), inset 0 0 20px rgba(255, 208, 0, 0.5);
+    border-color: #ffd000;
+  }
+}
+
+.anim-orbital-ring-1 {
+  position: absolute;
+  inset: -4px;
+  border-radius: 16px;
+  border: 1.5px dashed rgba(255, 208, 0, 0.7);
+  animation: orbitalSpinClockwise 8s linear infinite;
+  pointer-events: none;
+}
+
+.anim-orbital-ring-2 {
+  position: absolute;
+  inset: -8px;
+  border-radius: 20px;
+  border: 1px dotted rgba(255, 42, 75, 0.5);
+  animation: orbitalSpinCounter 12s linear infinite;
+  pointer-events: none;
+}
+
+.anim-seed-reactor {
+  animation: goldLightningSurge 2s ease-in-out infinite;
+}
+
+/* 3. ULTRASONIC COUNTDOWN RADAR PULSE */
+@keyframes radarShockwave {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.anim-radar-wave {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1.5px solid currentColor;
+  animation: radarShockwave 1.6s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes criticalAlarmStrobe {
+  0%, 100% {
+    background-color: rgba(255, 42, 75, 0.15);
+    border-color: #ff2a4b;
+    box-shadow: 0 0 20px rgba(255, 42, 75, 0.5);
+  }
+  50% {
+    background-color: rgba(255, 42, 75, 0.35);
+    border-color: #ff0033;
+    box-shadow: 0 0 35px rgba(255, 42, 75, 0.85);
+  }
+}
+
+.anim-critical-alarm {
+  animation: criticalAlarmStrobe 0.6s ease-in-out infinite;
+}
+
+/* 4. 360° RGB CHROMA HORIZON BORDER */
+@keyframes rgbChromaFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.anim-rgb-border {
+  position: relative;
+}
+
+.anim-rgb-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ff0055, #ffd000, #00ff88, #00e5ff, #bf00ff, #ff0055);
+  background-size: 350% 350%;
+  animation: rgbChromaFlow 4.5s ease infinite;
+  z-index: -1;
+  opacity: 0.85;
+}
+
+/* 5. OUTCOME REVEAL SEISMIC SUPERNOVA */
+@keyframes outcomeSupernovaBurst {
+  0% {
+    transform: scale(0.65);
+    filter: blur(8px) brightness(2.5);
+    opacity: 0.2;
+  }
+  40% {
+    transform: scale(1.08);
+    filter: blur(0px) brightness(1.6);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(0.98);
+    filter: brightness(1.2);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+    opacity: 1;
+  }
+}
+
+.anim-outcome-supernova {
+  animation: outcomeSupernovaBurst 0.75s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+}
+
+@keyframes energyHaloPulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.08);
+  }
+}
+
+.anim-energy-halo {
+  animation: energyHaloPulse 2.2s ease-in-out infinite;
+}
+
+/* SERVER 1 & SERVER 2 AURA & COLOR PALETTE ENHANCEMENTS */
+.text-glow-violet {
+  text-shadow: 0 0 18px rgba(192, 132, 252, 0.7), 0 0 30px rgba(168, 85, 247, 0.4);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 16px rgba(0, 229, 255, 0.7), 0 0 25px rgba(0, 255, 231, 0.4);
+}
+
+.server-bigsmall-card {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 255, 136, 0.12);
+}
+
+.server-redgreen-card {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(192, 132, 252, 0.15);
+}
+
+/* ============================================================ */
+/* 5-SECOND CRITICAL RED WARNING ALARM SYSTEM ANIMATIONS */
+/* ============================================================ */
+@keyframes criticalTimerStrobe {
+  0%, 100% {
+    box-shadow: 0 0 35px rgba(255, 42, 75, 0.45), inset 0 0 20px rgba(255, 42, 75, 0.25);
+    border-color: rgba(255, 42, 75, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 75px rgba(255, 0, 50, 0.9), 0 0 110px rgba(255, 0, 0, 0.55), inset 0 0 45px rgba(255, 0, 50, 0.45);
+    border-color: rgba(255, 20, 50, 1);
+  }
+}
+
+.anim-critical-timer-strobe {
+  animation: criticalTimerStrobe 0.75s ease-in-out infinite;
+}
+
+@keyframes countdownSurge {
+  0% {
+    transform: scale(1.4);
+    opacity: 0.3;
+    filter: drop-shadow(0 0 30px #ff0033);
+  }
+  45% {
+    transform: scale(0.95);
+    opacity: 1;
+    filter: drop-shadow(0 0 50px #ff0033);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    filter: drop-shadow(0 0 30px #ff0033);
+  }
+}
+
+.anim-countdown-surge {
+  animation: countdownSurge 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes hazardStripesScroll {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 0;
+  }
+}
+
+.hazard-stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 42, 75, 0.35),
+    rgba(255, 42, 75, 0.35) 12px,
+    rgba(0, 0, 0, 0.5) 12px,
+    rgba(0, 0, 0, 0.5) 24px
+  );
+  background-size: 40px 40px;
+  animation: hazardStripesScroll 1.2s linear infinite;
+}
+
+/* ============================================================ */
+/* 3D BALL GLITTER & FLOATING LEVITATION (JOLMOL & NORBE) */
+/* ============================================================ */
+@keyframes ballLevitateFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+    filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 16px rgba(255, 208, 0, 0.6));
+  }
+  25% {
+    transform: translateY(-8px) rotate(-4deg) scale(1.06);
+    filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 28px rgba(0, 255, 136, 0.85));
+  }
+  50% {
+    transform: translateY(-3px) rotate(3deg) scale(1.03);
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 24px rgba(255, 42, 75, 0.85));
+  }
+  75% {
+    transform: translateY(-11px) rotate(-2deg) scale(1.08);
+    filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 35px rgba(255, 208, 0, 0.95));
+  }
+}
+
+.anim-ball-levitate,
+.anim-norbe {
+  animation: ballLevitateFloat 2.4s ease-in-out infinite;
+}
+
+@keyframes ballShimmerSparkle {
+  0%, 100% {
+    opacity: 0.65;
+    transform: scale(0.96);
+    filter: brightness(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.14);
+    filter: brightness(1.5) drop-shadow(0 0 26px rgba(255, 215, 0, 0.95)) drop-shadow(0 0 40px rgba(255, 255, 255, 0.9));
+  }
+}
+
+.anim-ball-shimmer,
+.anim-jolmol {
+  animation: ballShimmerSparkle 1.3s ease-in-out infinite;
+}
+
+/* Luxury Jolmol Shimmer & Color-Changing Animation for TKS API PANEL Brand */
+@keyframes tksJolmolShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes tksColorCycle {
+  0% {
+    filter: hue-rotate(0deg) drop-shadow(0 0 12px rgba(0, 255, 136, 0.9));
+  }
+  25% {
+    filter: hue-rotate(90deg) drop-shadow(0 0 16px rgba(0, 229, 255, 0.95));
+  }
+  50% {
+    filter: hue-rotate(180deg) drop-shadow(0 0 20px rgba(255, 208, 0, 0.95));
+  }
+  75% {
+    filter: hue-rotate(270deg) drop-shadow(0 0 16px rgba(255, 42, 75, 0.95));
+  }
+  100% {
+    filter: hue-rotate(360deg) drop-shadow(0 0 12px rgba(0, 255, 136, 0.9));
+  }
+}
+
+.tks-brand-jolmol-color-shift,
+.jolmol-brand-text {
+  background: linear-gradient(
+    90deg,
+    #00ff88 0%,
+    #00e5ff 20%,
+    #ffd700 40%,
+    #ff2a4b 60%,
+    #bf00ff 80%,
+    #00ff88 100%
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: tksJolmolShimmer 3s ease-in-out infinite, tksColorCycle 4s linear infinite;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+@keyframes eagleWingGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5)) drop-shadow(0 0 25px rgba(255, 42, 75, 0.3));
+    transform: translateY(0px);
+  }
+  50% {
+    filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 35px rgba(0, 255, 136, 0.4));
+    transform: translateY(-2px);
+  }
+}
+
+.anim-eagle-wings {
+  animation: eagleWingGlow 3s ease-in-out infinite;
+}
+
+@keyframes starTwinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.4) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.4) rotate(180deg);
+  }
+}
+
+.anim-star-twinkle {
+  animation: starTwinkle 1.1s ease-in-out infinite;
+}
+
+/* ============================================================ */
+/* HOLOGRAPHIC MODAL ENTRANCE & RADIANT GLOW ANIMATIONS */
+/* ============================================================ */
+@keyframes holoModalEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.85) translateY(30px);
+    filter: blur(8px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.03) translateY(-4px);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.anim-modal-holo {
+  animation: holoModalEntrance 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes neonBorderPulse {
+  0%, 100% {
+    border-color: rgba(255, 208, 0, 0.4);
+    box-shadow: 0 0 25px rgba(255, 208, 0, 0.2);
+  }
+  50% {
+    border-color: rgba(0, 255, 136, 0.9);
+    box-shadow: 0 0 50px rgba(0, 255, 136, 0.45);
+  }
+}
+
+.anim-neon-border {
+  animation: neonBorderPulse 2.4s ease-in-out infinite;
+}
+
+/* ============================================================ */
+/* MARATTOK KILLER CYBER ANIMATIONS */
+/* ============================================================ */
+@keyframes marattokPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 22px rgba(255, 208, 0, 0.45), inset 0 0 12px rgba(255, 208, 0, 0.2);
+    filter: drop-shadow(0 0 10px rgba(255, 208, 0, 0.5));
+  }
+  33% {
+    transform: scale(1.04);
+    box-shadow: 0 0 38px rgba(0, 255, 136, 0.65), inset 0 0 16px rgba(0, 255, 136, 0.3);
+    filter: drop-shadow(0 0 18px rgba(0, 255, 136, 0.75));
+  }
+  66% {
+    transform: scale(0.98);
+    box-shadow: 0 0 38px rgba(6, 182, 212, 0.65), inset 0 0 16px rgba(6, 182, 212, 0.3);
+    filter: drop-shadow(0 0 18px rgba(6, 182, 212, 0.75));
+  }
+}
+
+.anim-marattok-pulse {
+  animation: marattokPulse 2.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes floatFab {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+.anim-float-fab {
+  animation: floatFab 2.6s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 16px rgba(255, 208, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(255, 208, 0, 0.75), 0 0 55px rgba(0, 255, 136, 0.45);
+  }
+}
+
+.anim-pulse-glow {
+  animation: pulseGlow 1.8s ease-in-out infinite;
+}
+
+@keyframes electricAuraSpin {
+  0% {
+    transform: rotate(0deg) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+    opacity: 0.95;
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+    opacity: 0.6;
+  }
+}
+
+.anim-electric-aura {
+  animation: electricAuraSpin 5s linear infinite;
+}
+
+@keyframes superLaserScan {
+  0% {
+    top: 0%;
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0.8;
+  }
+}
+
+.anim-super-laser {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #00ff88, #ffd700, #00f0ff, transparent);
+  box-shadow: 0 0 15px #00ff88, 0 0 25px #ffd700;
+  animation: superLaserScan 2.2s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 15;
+}
+
+
+
+
+
